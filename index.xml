@@ -2,36 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>opstecwang</title>
-    <link>http://wt-jrp.life/</link>
+    <link>http://opstecwang.github.io/</link>
     <description>Recent content on opstecwang</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 04 Jun 2021 09:52:13 +0800</lastBuildDate><atom:link href="http://wt-jrp.life/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 04 Jun 2021 20:49:48 +0800</lastBuildDate><atom:link href="http://opstecwang.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>第一篇文章</title>
-      <link>http://wt-jrp.life/post/first_md/</link>
-      <pubDate>Fri, 04 Jun 2021 09:52:13 +0800</pubDate>
+      <title>K8s DNS策略</title>
+      <link>http://opstecwang.github.io/post/k8s-dns%E7%AD%96%E7%95%A5/</link>
+      <pubDate>Fri, 04 Jun 2021 20:49:48 +0800</pubDate>
       
-      <guid>http://wt-jrp.life/post/first_md/</guid>
-      <description>第一篇文章 第一篇文章 第一篇文章</description>
-    </item>
-    
-    <item>
-      <title>Two</title>
-      <link>http://wt-jrp.life/post/two/</link>
-      <pubDate>Fri, 04 Jun 2021 09:52:03 +0800</pubDate>
-      
-      <guid>http://wt-jrp.life/post/two/</guid>
-      <description>22222222222222222222222222 222222222222222222222222</description>
-    </item>
-    
-    <item>
-      <title>One</title>
-      <link>http://wt-jrp.life/post/one/</link>
-      <pubDate>Fri, 04 Jun 2021 09:51:57 +0800</pubDate>
-      
-      <guid>http://wt-jrp.life/post/one/</guid>
-      <description>1111111111111111111111 1111111111111111111111</description>
+      <guid>http://opstecwang.github.io/post/k8s-dns%E7%AD%96%E7%95%A5/</guid>
+      <description>k8s内设了4中DNS配置策略，通过dnsPolicy可配置
+ None : 无任何策略 Default ：默认 ClusterFirst ：集群 DNS 优先 ClusterFirstWithHostNet ：集群DNS优先，同时也使用宿主机网络  1、None策略 当dnsPolicy设置成None后，k8s不会为pod加载任何DNS配置。为了避免Pod里面没有DNS配置，最后通过dnsConfig来自定义DNS参数，如下所示：
+apiVersion: v1 kind: Pod metadata: name: demo namespace: default spec: containers: - image: base/java command: - &amp;quot;java -jar /opt/app.jar&amp;quot; imagePullPolicy: IfNotPresent name: demo restartPolicy: Always dnsPolicy: None dnsConfig: nameservers: - xxx.xxx.xxx.xxx searches: - ns1.svc.cluster.local - my.dns.search.suffix options: - name: ndots value: &amp;quot;2&amp;quot; - name: edns0 通过上述配置创建 Pod 之后，执行 kubectl exec demo cat /etc/resolv.conf 命令即可看到自定义的配置项目，如下：</description>
     </item>
     
   </channel>
