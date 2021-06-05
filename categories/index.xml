@@ -5,6 +5,34 @@
     <link>http://opstecwang.github.io/categories/</link>
     <description>Recent content in Categories on opstecwang</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language><atom:link href="http://opstecwang.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 05 Jun 2021 09:00:01 +0800</lastBuildDate><atom:link href="http://opstecwang.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>日志</title>
+      <link>http://opstecwang.github.io/categories/%E6%97%A5%E5%BF%97/</link>
+      <pubDate>Sat, 05 Jun 2021 09:00:01 +0800</pubDate>
+      
+      <guid>http://opstecwang.github.io/categories/%E6%97%A5%E5%BF%97/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>操作系统</title>
+      <link>http://opstecwang.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Fri, 04 Jun 2021 21:42:05 +0800</pubDate>
+      
+      <guid>http://opstecwang.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>http://opstecwang.github.io/categories/kubernetes/</link>
+      <pubDate>Fri, 04 Jun 2021 20:49:48 +0800</pubDate>
+      
+      <guid>http://opstecwang.github.io/categories/kubernetes/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

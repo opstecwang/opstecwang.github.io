@@ -9,21 +9,21 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>Tags | opstecwang</title>
-    <meta property="og:title" content="Tags - opstecwang">
+    <title>Kubernetes | opstecwang</title>
+    <meta property="og:title" content="Kubernetes - opstecwang">
     <meta property="og:type" content="article">
         
         
     <meta name="Keywords" content="golang,go语言,go语言笔记,飞雪无情,java,android,博客,项目管理,python,软件架构,公众号,小程序">
-    <meta name="description" content="Tags">
+    <meta name="description" content="Kubernetes">
         
     <meta name="author" content="opstecwang">
-    <meta property="og:url" content="http://opstecwang.github.io/tags/">
+    <meta property="og:url" content="http://opstecwang.github.io/tags/kubernetes/">
     <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
     <link rel="stylesheet" href='/css/style.css'>
-    <link rel="alternate" type="application/rss+xml" href="http://opstecwang.github.io/tags/index.xml" title="opstecwang" />
+    <link rel="alternate" type="application/rss+xml" href="http://opstecwang.github.io/tags/kubernetes/index.xml" title="opstecwang" />
     <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
@@ -73,43 +73,47 @@
 
                 <div class="col-8" id="main">
                     
-<header>
+<div class="res-cons">
     
-        <h1>共有3个标签</h1>
+    <h3 class="archive-title">
+        包含标签
+        <span class="keyword">Kubernetes</span>
+        的文章
+    </h3>
     
-</header>
-<div class="post-archive">
+
     
-    <h2><a href="http://opstecwang.github.io/tags/kubernetes">kubernetes</a> (1)</h2>
-    <ul class="listing">
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="http://opstecwang.github.io/post/k8s-dns%E7%AD%96%E7%95%A5/">K8s DNS策略</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年6月4日
+        </date>
         
-        <li>
-            <span class="date">2021/06/04</span>
-            <a href="http://opstecwang.github.io/post/k8s-dns%E7%AD%96%E7%95%A5/" title="K8s DNS策略">K8s DNS策略</a>
-        </li>
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='/categories/kubernetes'>Kubernetes</a>
+            
+        </div>
         
-    </ul>
+        <div class="post-content">
+            k8s内设了4中DNS配置策略，通过dnsPolicy可配置
+ None : 无任何策略 Default ：默认 ClusterFirst ：集群 DNS 优先 ClusterFirstWithHostNet ：集群DNS优先，同时也使用宿主机网络  1、None策略 当dnsPolicy设置成None后，k8s不会为pod加载任何DNS配置。为了避免Pod里面没有DNS配置，最后通过dnsConfig来自定义DNS参数，如下所示：
+apiVersion: v1 kind: Pod metadata: name: demo namespace: default spec: containers: - image: base/java command: - &quot;java -jar /opt/app.jar&quot; imagePullPolicy: IfNotPresent name: demo restartPolicy: Always dnsPolicy: None dnsConfig: nameservers: - xxx.xxx.xxx.xxx searches: - ns1.svc.cluster.local - my.dns.search.suffix options: - name: ndots value: &quot;2&quot; - name: edns0 通过上述配置创建 Pod 之后，执行 kubectl exec demo cat /etc/resolv.conf 命令即可看到自定义的配置项目，如下：……
+            <p class="readmore"><a href="http://opstecwang.github.io/post/k8s-dns%E7%AD%96%E7%95%A5/">阅读全文</a></p>
+        </div>
+    </article>
     
-    <h2><a href="http://opstecwang.github.io/tags/less">less</a> (1)</h2>
-    <ul class="listing">
-        
-        <li>
-            <span class="date">2021/06/04</span>
-            <a href="http://opstecwang.github.io/post/less%E7%9A%84%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95/" title="Less的常见用法">Less的常见用法</a>
-        </li>
-        
-    </ul>
+
     
-    <h2><a href="http://opstecwang.github.io/tags/syslog-ng">syslog-ng</a> (1)</h2>
-    <ul class="listing">
-        
-        <li>
-            <span class="date">2021/06/05</span>
-            <a href="http://opstecwang.github.io/post/syslog-ng%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B/" title="syslog-ng安装及简单实例">syslog-ng安装及简单实例</a>
-        </li>
-        
-    </ul>
-    
+
+
+
+
 
 </div>
 

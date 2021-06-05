@@ -5,6 +5,34 @@
     <link>http://opstecwang.github.io/tags/</link>
     <description>Recent content in Tags on opstecwang</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language><atom:link href="http://opstecwang.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 05 Jun 2021 09:00:01 +0800</lastBuildDate><atom:link href="http://opstecwang.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>syslog-ng</title>
+      <link>http://opstecwang.github.io/tags/syslog-ng/</link>
+      <pubDate>Sat, 05 Jun 2021 09:00:01 +0800</pubDate>
+      
+      <guid>http://opstecwang.github.io/tags/syslog-ng/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>less</title>
+      <link>http://opstecwang.github.io/tags/less/</link>
+      <pubDate>Fri, 04 Jun 2021 21:42:05 +0800</pubDate>
+      
+      <guid>http://opstecwang.github.io/tags/less/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>http://opstecwang.github.io/tags/kubernetes/</link>
+      <pubDate>Fri, 04 Jun 2021 20:49:48 +0800</pubDate>
+      
+      <guid>http://opstecwang.github.io/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

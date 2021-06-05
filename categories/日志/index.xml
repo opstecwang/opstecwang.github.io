@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on opstecwang</title>
-    <link>http://opstecwang.github.io/post/</link>
-    <description>Recent content in Posts on opstecwang</description>
+    <title>日志 on opstecwang</title>
+    <link>http://opstecwang.github.io/categories/%E6%97%A5%E5%BF%97/</link>
+    <description>Recent content in 日志 on opstecwang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 05 Jun 2021 09:00:01 +0800</lastBuildDate><atom:link href="http://opstecwang.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Jun 2021 09:00:01 +0800</lastBuildDate><atom:link href="http://opstecwang.github.io/categories/%E6%97%A5%E5%BF%97/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>syslog-ng安装及简单实例</title>
       <link>http://opstecwang.github.io/post/syslog-ng%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B/</link>
@@ -21,28 +21,6 @@ syslog-ng的一个设计原则就是建立更好的消息过滤粒度。syslog-n
  客户端模式（client mode）： 服务端模式（server mode）: 中继模式（Relay mode）：  安装 1、安装 [root@syslog-ng ~]# yum install syslog-ng -y # 安装 [root@syslog-ng ~]# systemctl start syslog-ng.service # 启动 [root@syslog-ng ~]# systemctl enable syslog-ng.service # 开机启动 2、工作目录 配置目录
 [root@syslog-ng syslog-ng]# pwd /etc/syslog-ng [root@syslog-ng syslog-ng]# ls conf.d patterndb.d scl.conf syslog-ng.conf syslog-ng.conf 为主配置文件，它主要分为 5 段：
 options { }; # 全局配置 source s_name { }; # 日志源，可以是本地也可以是远程主机 filter f_name { }; # 过滤规则 destination d_name { }; # 日志输出，可以是本地也可以是远程主机 log { source(s_name); filter(f_name); destination() }; #此段将来源、过滤、目的，连接起来并且告诉syslog-ng如何处理日志 简单实例 1、实例描述 本实例才用syslog-ng的C/S架构，客户端和服务端都要安装syslog-ng。接收远程客户端应用日志（dev-api.</description>
-    </item>
-    
-    <item>
-      <title>Less的常见用法</title>
-      <link>http://opstecwang.github.io/post/less%E7%9A%84%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95/</link>
-      <pubDate>Fri, 04 Jun 2021 21:42:05 +0800</pubDate>
-      
-      <guid>http://opstecwang.github.io/post/less%E7%9A%84%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95/</guid>
-      <description>less用来查看文件内容，功能极其强大。它在搜索文件内容之前不会加载整个文件，看文本文件经常用到这个命令。
-它的使用方法很多，常用到的如下：
-1、搜索 1.1 向下搜索 用法： /搜索关键词 /：使用一个模式进行关键词搜索，并定位到下一个匹配的关键词 n：向下查找下一个匹配的关键词 N：向上查找下一个匹配的关键词 1.2 向上搜索 用法： ?搜索关键词 ?：使用模式进行关键词搜索，并定位到下一个匹配的关键词 n：向上查找下一个匹配的关键词 N：向下查找下一个匹配的关键词 2、全屏导航 [pageup]键：向上翻一页 [pagedown]键：向下翻一页 空格键：向下翻一页 3、单行导航 [Enter]键：向下移动一行 上下方向键：向上或向下移动一行 4、移动到首、尾行 g：移动到第一行 G：移动到最后一行 </description>
-    </item>
-    
-    <item>
-      <title>K8s DNS策略</title>
-      <link>http://opstecwang.github.io/post/k8s-dns%E7%AD%96%E7%95%A5/</link>
-      <pubDate>Fri, 04 Jun 2021 20:49:48 +0800</pubDate>
-      
-      <guid>http://opstecwang.github.io/post/k8s-dns%E7%AD%96%E7%95%A5/</guid>
-      <description>k8s内设了4中DNS配置策略，通过dnsPolicy可配置
- None : 无任何策略 Default ：默认 ClusterFirst ：集群 DNS 优先 ClusterFirstWithHostNet ：集群DNS优先，同时也使用宿主机网络  1、None策略 当dnsPolicy设置成None后，k8s不会为pod加载任何DNS配置。为了避免Pod里面没有DNS配置，最后通过dnsConfig来自定义DNS参数，如下所示：
-apiVersion: v1 kind: Pod metadata: name: demo namespace: default spec: containers: - image: base/java command: - &amp;quot;java -jar /opt/app.jar&amp;quot; imagePullPolicy: IfNotPresent name: demo restartPolicy: Always dnsPolicy: None dnsConfig: nameservers: - xxx.xxx.xxx.xxx searches: - ns1.svc.cluster.local - my.dns.search.suffix options: - name: ndots value: &amp;quot;2&amp;quot; - name: edns0 通过上述配置创建 Pod 之后，执行 kubectl exec demo cat /etc/resolv.conf 命令即可看到自定义的配置项目，如下：</description>
     </item>
     
   </channel>
