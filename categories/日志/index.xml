@@ -18,9 +18,9 @@
 简介 syslog是Linux系统默认的日志守护进程，默认的syslog配置文件是/etc/syslog.conf文件。syslog守护进程是可配置的，它允许人们为每一种类型的系统信息精确地指定一个存放地点。比较 syslog ，syslog-ng 具有众多高级的功能：更好的网络支持，更加方便的配置，集中式的网络日志存储，并且更具有弹性。比如，使用syslogd时，所有的iptables日志与其他内核日志一起全部存储到了kern.log文件里。Syslog-ng则可以让你有选择性的将iptables部分分出到另外的日志文件中。Syslogd仅能使用UDP协议，Syslog-ng 可以使用UDP和TCP协议。所以我们可以在加密的网络隧道中传输日志到集中日志服务器。
 syslog-ng的一个设计原则就是建立更好的消息过滤粒度。syslog-ng能够进行基于内容和优先权/facility的过滤。另一个设计原则是更容易进行不同防火墙网段的信息转发，它支持主机链，即使日志消息经过了许多计算机的转发，也可以找出原发主机地址和整个转发链。最后的一个设计原则就是尽量使配置文件强大和简洁。syslog-ng作为syslog的替代工具，可以完全替代syslog的服务，并且通过定义规则，实现更好的过滤功能。
 模式 syslog-ng模式有三种：客户端模式、服务端模式、中继模式。
- 客户端模式（client mode）： 服务端模式（server mode）: 中继模式（Relay mode）：  安装 1、安装 [root@syslog-ng ~]# yum install syslog-ng -y # 安装 [root@syslog-ng ~]# systemctl start syslog-ng.service # 启动 [root@syslog-ng ~]# systemctl enable syslog-ng.service # 开机启动 2、工作目录 配置目录
-[root@syslog-ng syslog-ng]# pwd /etc/syslog-ng [root@syslog-ng syslog-ng]# ls conf.d patterndb.d scl.conf syslog-ng.conf syslog-ng.conf 为主配置文件，它主要分为 5 段：
-options { }; # 全局配置 source s_name { }; # 日志源，可以是本地也可以是远程主机 filter f_name { }; # 过滤规则 destination d_name { }; # 日志输出，可以是本地也可以是远程主机 log { source(s_name); filter(f_name); destination() }; #此段将来源、过滤、目的，连接起来并且告诉syslog-ng如何处理日志 简单实例 1、实例描述 本实例才用syslog-ng的C/S架构，客户端和服务端都要安装syslog-ng。接收远程客户端应用日志（dev-api.</description>
+ 客户端模式（client mode）： 服务端模式（server mode）: 中继模式（Relay mode）：  安装 1、安装 [root@syslog-ng ~]# yum install syslog-ng -y # 安装[root@syslog-ng ~]# systemctl start syslog-ng.service # 启动[root@syslog-ng ~]# systemctl enable syslog-ng.service # 开机启动2、工作目录 配置目录
+[root@syslog-ng syslog-ng]# pwd/etc/syslog-ng[root@syslog-ng syslog-ng]# lsconf.d patterndb.d scl.conf syslog-ng.confsyslog-ng.conf 为主配置文件，它主要分为 5 段：
+options { }; # 全局配置source s_name { }; # 日志源，可以是本地也可以是远程主机filter f_name { }; # 过滤规则destination d_name { }; # 日志输出，可以是本地也可以是远程主机log { source(s_name); filter(f_name); destination() }; #此段将来源、过滤、目的，连接起来并且告诉syslog-ng如何处理日志简单实例 1、实例描述 本实例才用syslog-ng的C/S架构，客户端和服务端都要安装syslog-ng。接收远程客户端应用日志（dev-api.</description>
     </item>
     
   </channel>

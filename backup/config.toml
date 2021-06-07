@@ -36,9 +36,15 @@ theme = "maupassant"
 [menu]
   [[menu.main]]
     identifier = "books"
-    name = "新书"
+    name = "读书"
     url = "/books/"
     weight = 2
+
+  [[menu.main]]
+    identifier = "parenting"
+    name = "育儿"
+    url = "/parenting/"
+    weight = 3
 
   [[menu.main]]
     identifier = "archives"
