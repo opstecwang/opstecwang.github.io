@@ -6,7 +6,36 @@
     <description>Recent content on opstecwang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 07 Jun 2021 10:10:00 +0800</lastBuildDate><atom:link href="http://opstecwang.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 09 Jun 2021 10:50:48 +0800</lastBuildDate><atom:link href="http://opstecwang.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Django | 模型字段</title>
+      <link>http://opstecwang.github.io/post/django-%E6%A8%A1%E5%9E%8B%E5%AD%97%E6%AE%B5/</link>
+      <pubDate>Wed, 09 Jun 2021 10:50:48 +0800</pubDate>
+      
+      <guid>http://opstecwang.github.io/post/django-%E6%A8%A1%E5%9E%8B%E5%AD%97%E6%AE%B5/</guid>
+      <description>定义模型的基本要素：模型字段、重写函数__str__和Meta选项
+模型字段 AutoField 自增长类型，数据表的字段为整数，长度为11位。
+BigAutoField 自增长类型，数据表的字段为bigint，长度为20位。
+CharField 字符类型，适用于中小长度的字符串
+BooleanField 布尔类型，一个真／假（true/false）字段。
+CommaaSeparatedIntegerField 一个用逗号分隔的整数类型。和 CharField 中一样， maxlength 参数是必需的。
+DateField 日期字段
+DateTimeField 时间日期字段，额外选项同DateField
+EmailField 一个能检查值是否是有效的电子邮件地址的 CharField 。不接受 maxlength 参数，它的 maxlength 被自动设置为75。
+FileField 文件上传字段，必须参数upload_to一个本地的文件系统路径，被附加到你的 MEDIA_ROOT 设置后面，这决定了 get__url() 辅助函数的输出
+FilePathField 文件系统中某个目录下的文件名
+FloatField 浮点数，
+ImageField 同FileField要验证上传的对象是一个有效的图片
+IntegerField 整数
+IPAddressField IP地址，以字符串格式表示（例如： &amp;ldquo;24.124.1.30&amp;rdquo; ）。
+NullBooleanField 就像一个 BooleanField ，但它支持 None /Null
+PhoneNumberField 它是一个 CharField ，并且会检查值是否是一个合法的美式电话格式，如（XXX-XXX-XXXX） PositiveIntegerField 正整数
+SlugField 嵌条是报纸业的术语。 嵌条 就是一段内容的简短标签，这段内容只能包含字母、数字、下划线或连字符,通常用于URL中
+SmallIntegerField 和 IntegerField 类似，但是只允许在一个数据库相关的范围内的数值（通常是-32,768到+32,767）
+TextField 不限长度的文字长度
+TimeField 时分秒的时间显示。它接受的可指定参数与 DateField 和 DateTimeField 相同</description>
+    </item>
+    
     <item>
       <title>Shell | 防止SSH暴力破解</title>
       <link>http://opstecwang.github.io/post/shell-%E9%98%B2%E6%AD%A2ssh%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/</link>

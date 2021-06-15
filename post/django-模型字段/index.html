@@ -9,20 +9,20 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>Shell | 实时查看网络流量 | opstecwang</title>
-    <meta property="og:title" content="Shell | 实时查看网络流量 - opstecwang">
+    <title>Django | 模型字段 | opstecwang</title>
+    <meta property="og:title" content="Django | 模型字段 - opstecwang">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2021-06-07T10:00:00&#43;08:00'>
+    <meta property="article:published_time" content='2021-06-09T10:50:48&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2021-06-07T10:00:00&#43;08:00'>
+    <meta property="article:modified_time" content='2021-06-09T10:50:48&#43;08:00'>
         
     <meta name="Keywords" content="golang,go语言,go语言笔记,飞雪无情,java,android,博客,项目管理,python,软件架构,公众号,小程序">
-    <meta name="description" content="Shell | 实时查看网络流量">
+    <meta name="description" content="Django | 模型字段">
         
     <meta name="author" content="opstecwang">
-    <meta property="og:url" content="http://opstecwang.github.io/post/shell-%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F/">
+    <meta property="og:url" content="http://opstecwang.github.io/post/django-%E6%A8%A1%E5%9E%8B%E5%AD%97%E6%AE%B5/">
     <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
@@ -143,7 +143,13 @@
 <div class="post-toc" style="position: absolute; top: 188px;">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-        <nav id="TableOfContents"></nav>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#模型字段">模型字段</a></li>
+    <li><a href="#通用的模型字段参数">通用的模型字段参数</a></li>
+    <li><a href="#meta选项的-19-个属性">Meta选项的 19 个属性</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 <script type="text/javascript">
@@ -175,16 +181,16 @@
 </script>
     <article class="post">
         <header>
-            <h1 class="post-title">Shell | 实时查看网络流量</h1>
+            <h1 class="post-title">Django | 模型字段</h1>
         </header>
         <date class="post-meta meta-date">
-            2021年6月7日
+            2021年6月9日
         </date>
         
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='/categories/%E8%84%9A%E6%9C%AC'>脚本</a></span>
+            <span class="meta-category"><a href='/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80'>编程语言</a></span>
             
         </div>
         
@@ -202,85 +208,74 @@
         </div>
         
         <div class="post-content">
-            <p>可以实时查看指定网卡流量<br>
-用法： <code>bash RT-Traffic.sh eth0</code></p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-weight:bold;font-style:italic">#!/bin/bash
-</span><span style="color:#999;font-weight:bold;font-style:italic"></span><span style="color:#998;font-style:italic"># shellname: RT-Traffic.sh</span>
-<span style="color:#000;font-weight:bold">while</span> <span style="color:#000;font-weight:bold">[</span> <span style="color:#d14">&#34;1&#34;</span> <span style="color:#000;font-weight:bold">]</span>
-<span style="color:#000;font-weight:bold">do</span>
-    <span style="color:#008080">eth</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">$1</span>
-    <span style="color:#008080">RXpre</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span>cat /proc/net/dev | grep <span style="color:#008080">$eth</span> | tr : <span style="color:#d14">&#34; &#34;</span> | awk <span style="color:#d14">&#39;{print $2}&#39;</span><span style="color:#000;font-weight:bold">)</span>
-    <span style="color:#008080">TXpre</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span>cat /proc/net/dev | grep <span style="color:#008080">$eth</span> | tr : <span style="color:#d14">&#34; &#34;</span> | awk <span style="color:#d14">&#39;{print $10}&#39;</span><span style="color:#000;font-weight:bold">)</span>
-    sleep <span style="color:#099">1</span>
-    <span style="color:#008080">RXnext</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span>cat /proc/net/dev | grep <span style="color:#008080">$eth</span> | tr : <span style="color:#d14">&#34; &#34;</span> | awk <span style="color:#d14">&#39;{print $2}&#39;</span><span style="color:#000;font-weight:bold">)</span>
-    <span style="color:#008080">TXnext</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span>cat /proc/net/dev | grep <span style="color:#008080">$eth</span> | tr : <span style="color:#d14">&#34; &#34;</span> | awk <span style="color:#d14">&#39;{print $10}&#39;</span><span style="color:#000;font-weight:bold">)</span>
-    
-    clear
-    <span style="color:#0086b3">echo</span>  -e  <span style="color:#d14">&#34;\t RX `date +%k:%M:%S` TX&#34;</span>
-    <span style="color:#008080">RX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$((</span><span style="color:#d14">${</span><span style="color:#008080">RXnext</span><span style="color:#d14">}</span><span style="color:#000;font-weight:bold">-</span><span style="color:#d14">${</span><span style="color:#008080">RXpre</span><span style="color:#d14">}</span><span style="color:#000;font-weight:bold">))</span>
-    <span style="color:#008080">TX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$((</span><span style="color:#d14">${</span><span style="color:#008080">TXnext</span><span style="color:#d14">}</span><span style="color:#000;font-weight:bold">-</span><span style="color:#d14">${</span><span style="color:#008080">TXpre</span><span style="color:#d14">}</span><span style="color:#000;font-weight:bold">))</span>
- 
-    <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">[[</span> <span style="color:#008080">$RX</span> -lt <span style="color:#099">1024</span> <span style="color:#000;font-weight:bold">]]</span>;<span style="color:#000;font-weight:bold">then</span>
-        <span style="color:#008080">RX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#d14">${</span><span style="color:#008080">RX</span><span style="color:#d14">}</span><span style="color:#d14">B/s&#34;</span>
-    <span style="color:#000;font-weight:bold">elif</span> <span style="color:#000;font-weight:bold">[[</span> <span style="color:#008080">$RX</span> -gt <span style="color:#099">1048576</span> <span style="color:#000;font-weight:bold">]]</span>;<span style="color:#000;font-weight:bold">then</span>
-        <span style="color:#008080">RX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span><span style="color:#0086b3">echo</span> <span style="color:#008080">$RX</span> | awk <span style="color:#d14">&#39;{print $1/1048576 &#34;MB/s&#34;}&#39;</span><span style="color:#000;font-weight:bold">)</span>
-    <span style="color:#000;font-weight:bold">else</span>
-        <span style="color:#008080">RX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span><span style="color:#0086b3">echo</span> <span style="color:#008080">$RX</span> | awk <span style="color:#d14">&#39;{print $1/1024 &#34;KB/s&#34;}&#39;</span><span style="color:#000;font-weight:bold">)</span>
-    <span style="color:#000;font-weight:bold">fi</span>
-     
-    <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">[[</span> <span style="color:#008080">$TX</span> -lt <span style="color:#099">1024</span> <span style="color:#000;font-weight:bold">]]</span>;<span style="color:#000;font-weight:bold">then</span>
-        <span style="color:#008080">TX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#d14">${</span><span style="color:#008080">TX</span><span style="color:#d14">}</span><span style="color:#d14">B/s&#34;</span>
-    <span style="color:#000;font-weight:bold">elif</span> <span style="color:#000;font-weight:bold">[[</span> <span style="color:#008080">$TX</span> -gt <span style="color:#099">1048576</span> <span style="color:#000;font-weight:bold">]]</span>;<span style="color:#000;font-weight:bold">then</span>
-        <span style="color:#008080">TX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span><span style="color:#0086b3">echo</span> <span style="color:#008080">$TX</span> | awk <span style="color:#d14">&#39;{print $1/1048576 &#34;MB/s&#34;}&#39;</span><span style="color:#000;font-weight:bold">)</span>
-    <span style="color:#000;font-weight:bold">else</span>
-        <span style="color:#008080">TX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span><span style="color:#0086b3">echo</span> <span style="color:#008080">$TX</span> | awk <span style="color:#d14">&#39;{print $1/1024 &#34;KB/s&#34;}&#39;</span><span style="color:#000;font-weight:bold">)</span>
-    <span style="color:#000;font-weight:bold">fi</span>
-     
-    <span style="color:#0086b3">echo</span> -e <span style="color:#d14">&#34;</span><span style="color:#008080">$eth</span><span style="color:#d14"> \t </span><span style="color:#008080">$RX</span><span style="color:#d14">   </span><span style="color:#008080">$TX</span><span style="color:#d14"> &#34;</span>
+            <p>定义模型的基本要素：模型字段、重写函数__str__和Meta选项</p>
+<h2 id="模型字段">模型字段</h2>
+<p><code>AutoField</code> 自增长类型，数据表的字段为整数，长度为11位。<br>
+<code>BigAutoField</code> 自增长类型，数据表的字段为bigint，长度为20位。<br>
+<code>CharField</code> 字符类型，适用于中小长度的字符串<br>
+<code>BooleanField</code> 布尔类型，一个真／假（true/false）字段。<br>
+<code>CommaaSeparatedIntegerField</code> 一个用逗号分隔的整数类型。和 CharField 中一样， maxlength 参数是必需的。<br>
+<code>DateField</code> 日期字段<br>
+<code>DateTimeField</code> 时间日期字段，额外选项同DateField<br>
+<code>EmailField</code> 一个能检查值是否是有效的电子邮件地址的 CharField 。不接受 maxlength 参数，它的 maxlength 被自动设置为75。<br>
+<code>FileField</code> 文件上传字段，必须参数upload_to一个本地的文件系统路径，被附加到你的 MEDIA_ROOT 设置后面，这决定了 get_<!-- raw HTML omitted -->_url() 辅助函数的输出<br>
+<code>FilePathField</code> 文件系统中某个目录下的文件名<br>
+<code>FloatField</code> 浮点数，<br>
+<code>ImageField</code> 同FileField要验证上传的对象是一个有效的图片<br>
+<code>IntegerField</code> 整数<br>
+<code>IPAddressField</code> IP地址，以字符串格式表示（例如： &ldquo;24.124.1.30&rdquo; ）。<br>
+<code>NullBooleanField</code> 就像一个 BooleanField ，但它支持 None /Null<br>
+<code>PhoneNumberField</code> 它是一个 CharField ，并且会检查值是否是一个合法的美式电话格式，如（XXX-XXX-XXXX） 
+<code>PositiveIntegerField</code> 正整数<br>
+<code>SlugField</code> 嵌条是报纸业的术语。 嵌条 就是一段内容的简短标签，这段内容只能包含字母、数字、下划线或连字符,通常用于URL中<br>
+<code>SmallIntegerField</code> 和 IntegerField 类似，但是只允许在一个数据库相关的范围内的数值（通常是-32,768到+32,767）<br>
+<code>TextField</code> 不限长度的文字长度<br>
+<code>TimeField</code> 时分秒的时间显示。它接受的可指定参数与 DateField 和 DateTimeField 相同<br>
+<code>URLField</code> 存储URL的字段<br>
+<code>USStateField</code> 美国州名称缩写，两个字母<br>
+<code>XMLField</code> 它就是一个 TextField ，只不过要检查值是匹配指定schema的合法XML。</p>
+<h2 id="通用的模型字段参数">通用的模型字段参数</h2>
+<p><code>verbose_name</code> 默认为 None，在Admin站点管理设置字段的显示名称<br>
+<code>primary_key</code> 默认为 False，若为True，则将字段设置成主键<br>
+<code>max_length</code> 默认为 None，设置字段的最大长度<br>
+<code>unique</code> 默认为 False，若为True，则设置字段的唯一属性<br>
+<code>blank</code> 默认为 False，若为True，则字段允许为空值，数据库将存储空字符串<br>
+<code>null</code> 默认为 False，若为True，则字段允许为空值，数据库表现为NULL<br>
+<code>db_index</code> 默认为 False，若为True，则以此字段来创建数据库索引<br>
+<code>default</code> 默认为NOT_PROVIDED对象，设置字段的默认值。<br>
+<code>editable</code> 默认为 True，允许字段可编辑，用于设置Admin的新增数据的字段<br>
+<code>serialize</code> 默认为 True，允许字段序列化，可将数据转化为JSON格式<br>
+<code>unique_for_date</code> 默认为 None，设置日期字段的唯一性<br>
+<code>unique_for_month</code> 默认为 None，设置日期字段月份的唯一性<br>
+<code>unique_for_year</code> 默认为 None，设置日期字段年份的唯一性<br>
+<code>choices</code> 默认为空列表，设置字段的可选值<br>
+<code>help_text</code> 默认为空字符串，用于设置表单的提示信息<br>
+<code>db_column</code> 默认为 None，设置数据表的列名称，若不设置，则将字段名作为数据表的列名<br>
+<code>db_tablespace</code> 默认为 None，如果字段已创建索引，那么数据库的表空间名称将作为该字段的索引名。注意：部分数据库不支持表空间<br>
+<code>auto_created</code> 默认为 False，若为True，则自动创建字段，用于一对一的关系模型<br>
+<code>validators</code> 默认为空列表，设置字段内容的验证函数<br>
+<code>error_messages</code> 默认为 None，设置错误提示</p>
+<h2 id="meta选项的-19-个属性">Meta选项的 19 个属性</h2>
+<p><code>abstract</code> 
+<code>app_label</code> 
+<code>db_table</code> 
+<code>db_teblespace</code>
+<code>get_latest_by</code>
+<code>managed</code>
+<code>order_with_respect_to</code>
+<code>ordering</code>
+<code>permissions</code><br>
+<code>proxy</code> 
+<code>required_db_features</code> 
+<code>required_db_vendor</code> 
+<code>select_on_save</code> 
+<code>indexes</code> 
+<code>unique_together</code> 
+<code>verbose_name</code> 
+<code>verbose_name_plural</code> 
+<code>label</code> 
+<code>label_lower</code></p>
 
-<span style="color:#000;font-weight:bold">done</span>
-</code></pre></td></tr></table>
-</div>
-</div>
         </div>
 
         
@@ -292,13 +287,15 @@
     <h2>See Also</h2>
     <ul class="listing">
         
+        <li><a href="/post/shell-%E9%98%B2%E6%AD%A2ssh%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/">Shell | 防止SSH暴力破解</a></li>
+        
+        <li><a href="/post/shell-%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F/">Shell | 实时查看网络流量</a></li>
+        
         <li><a href="/post/shell-%E5%B7%AE%E5%BC%82%E5%A4%87%E4%BB%BD/">Shell | 差异备份</a></li>
         
         <li><a href="/post/syslog-ng%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B/">syslog-ng安装及简单实例</a></li>
         
         <li><a href="/post/less%E7%9A%84%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95/">Less的常见用法</a></li>
-        
-        <li><a href="/post/k8s-dns%E7%AD%96%E7%95%A5/">K8s DNS策略</a></li>
         
     </ul>
 </div>
@@ -308,7 +305,7 @@
             
             <ul class="clearfix">
                 
-                <li><a href='/tags/shell'>shell</a></li>
+                <li><a href='/tags/django'>Django</a></li>
                 
             </ul>
             
