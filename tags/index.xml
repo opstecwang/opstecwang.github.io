@@ -6,7 +6,25 @@
     <description>Recent content in Tags on opstecwang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 05 Jun 2021 09:00:01 +0800</lastBuildDate><atom:link href="http://opstecwang.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Jun 2021 09:50:48 +0800</lastBuildDate><atom:link href="http://opstecwang.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Django</title>
+      <link>http://opstecwang.github.io/tags/django/</link>
+      <pubDate>Thu, 10 Jun 2021 09:50:48 +0800</pubDate>
+      
+      <guid>http://opstecwang.github.io/tags/django/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shell</title>
+      <link>http://opstecwang.github.io/tags/shell/</link>
+      <pubDate>Mon, 07 Jun 2021 10:10:00 +0800</pubDate>
+      
+      <guid>http://opstecwang.github.io/tags/shell/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>syslog-ng</title>
       <link>http://opstecwang.github.io/tags/syslog-ng/</link>

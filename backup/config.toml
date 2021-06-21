@@ -6,7 +6,6 @@ theme = "maupassant"
 [author]
   name = "opstecwang"
 
-
 [params]
   author = "opstecwang"
   subtitle = "Python、shell、DevOps、SRE"
@@ -32,44 +31,50 @@ theme = "maupassant"
     lineNos = true
     style = "github"
 
-## 配置网站菜单
-[menu]
-  [[menu.main]]
-    identifier = "books"
-    name = "新书"
-    url = "/books/"
-    weight = 2
-
-  [[menu.main]]
-    identifier = "archives"
-    name = "归档"
-    url = "/archives/"
-    weight = 3
-
-  [[menu.main]]
-    identifier = "about"
-    name = "关于"
-    url = "/about/"
-    weight = 4
+### 配置网站菜单
+#[menu]
+#  [[menu.main]]
+#    identifier = "books"
+#    name = "读书"
+#    url = "/books/"
+#    weight = 2
+#
+#  [[menu.main]]
+#    identifier = "education"
+#    name = "教育"
+#    url = "/education/"
+#    weight = 3
+#
+#  [[menu.main]]
+#    identifier = "archives"
+#    name = "归档"
+#    url = "/archives/"
+#    weight = 3
+#
+#  [[menu.main]]
+#    identifier = "about"
+#    name = "关于"
+#    url = "/about/"
+#    weight = 4
 
 ## 友情链接，可以多个
-[[params.links]]
-  title = "Android Gradle权威指南"
-  name = "Android Gradle权威指南"
-  url = "http://yuedu.baidu.com/ebook/14a722970740be1e640e9a3e"
-[[params.links]]
-  title = "常用开发工具CDN镜像"
-  name = "常用开发工具CDN镜像"
-  url = "http://mirrors.flysnow.org/"
+#[[params.links]]
+#  title = "Android Gradle权威指南"
+#  name = "Android Gradle权威指南"
+#  url = "http://yuedu.baidu.com/ebook/14a722970740be1e640e9a3e"
+#[[params.links]]
+#  title = "常用开发工具CDN镜像"
+#  name = "常用开发工具CDN镜像"
+#  url = "http://mirrors.flysnow.org/"
 
 
 
-## 配置 utteranc评论,教程参考 https://utteranc.es/
-#[params.utteranc]
-#  enable = true
-#  repo = "your github repo" ##换成自己得
-#  issueTerm = "pathname"
-#  theme = "github-light"
+# 配置 utteranc评论,教程参考 https://utteranc.es/
+[params.utteranc]
+  enable = true
+  repo = "opstecwang/opstecwang.github.io" ##换成自己得
+  issueTerm = "pathname"
+  theme = "github-light"
 
 
 ## 保持分类的原始名字（false会做转小写处理）
@@ -78,9 +83,9 @@ preserveTaxonomyNames = true
 disablePathToLower = true
 
 hasCJKLanguage = true
-summaryLength = 70
+summaryLength = 5
 
-disqusShortname = "yourdiscussshortname"  ## 是否开启disqus评论，不要和utteranc同时开启
+#disqusShortname = "yourdiscussshortname"  ## 是否开启disqus评论，不要和utteranc同时开启
 
 
 
@@ -97,13 +102,8 @@ disqusShortname = "yourdiscussshortname"  ## 是否开启disqus评论，不要�
 #    name = "知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议"
 #    link = "https://creativecommons.org/licenses/by-nc-nd/4.0/"
 
-
-
-
-
-
-
-
-
-
+# 图片CDN
+[params.image_cdn]
+    enable = true
+    Host = "https://cdn.jsdelivr.net/gh/user/opstecwang.github.io"
 

@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>Shell | 实时查看网络流量 | opstecwang</title>
+    <meta property="og:title" content="Shell | 实时查看网络流量 - opstecwang">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2021-06-07T10:00:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-06-07T10:00:00&#43;08:00'>
+        
+    <meta name="Keywords" content="golang,go语言,go语言笔记,飞雪无情,java,android,博客,项目管理,python,软件架构,公众号,小程序">
+    <meta name="description" content="Shell | 实时查看网络流量">
+        
+    <meta name="author" content="opstecwang">
+    <meta property="og:url" content="http://opstecwang.github.io/post/shell-%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="http://opstecwang.github.io/">
+                        opstecwang
+                    </a>
+                
+                <p class="description">Python、shell、DevOps、SRE</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="http://opstecwang.github.io/">首页</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">Shell | 实时查看网络流量</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年6月7日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/%E8%84%9A%E6%9C%AC'>脚本</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <p>可以实时查看指定网卡流量<br>
+用法： <code>bash RT-Traffic.sh eth0</code></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#999;font-weight:bold;font-style:italic">#!/bin/bash
+</span><span style="color:#999;font-weight:bold;font-style:italic"></span><span style="color:#998;font-style:italic"># shellname: RT-Traffic.sh</span>
+<span style="color:#000;font-weight:bold">while</span> <span style="color:#000;font-weight:bold">[</span> <span style="color:#d14">&#34;1&#34;</span> <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">do</span>
+    <span style="color:#008080">eth</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">$1</span>
+    <span style="color:#008080">RXpre</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span>cat /proc/net/dev | grep <span style="color:#008080">$eth</span> | tr : <span style="color:#d14">&#34; &#34;</span> | awk <span style="color:#d14">&#39;{print $2}&#39;</span><span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#008080">TXpre</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span>cat /proc/net/dev | grep <span style="color:#008080">$eth</span> | tr : <span style="color:#d14">&#34; &#34;</span> | awk <span style="color:#d14">&#39;{print $10}&#39;</span><span style="color:#000;font-weight:bold">)</span>
+    sleep <span style="color:#099">1</span>
+    <span style="color:#008080">RXnext</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span>cat /proc/net/dev | grep <span style="color:#008080">$eth</span> | tr : <span style="color:#d14">&#34; &#34;</span> | awk <span style="color:#d14">&#39;{print $2}&#39;</span><span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#008080">TXnext</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span>cat /proc/net/dev | grep <span style="color:#008080">$eth</span> | tr : <span style="color:#d14">&#34; &#34;</span> | awk <span style="color:#d14">&#39;{print $10}&#39;</span><span style="color:#000;font-weight:bold">)</span>
+    
+    clear
+    <span style="color:#0086b3">echo</span>  -e  <span style="color:#d14">&#34;\t RX `date +%k:%M:%S` TX&#34;</span>
+    <span style="color:#008080">RX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$((</span><span style="color:#d14">${</span><span style="color:#008080">RXnext</span><span style="color:#d14">}</span><span style="color:#000;font-weight:bold">-</span><span style="color:#d14">${</span><span style="color:#008080">RXpre</span><span style="color:#d14">}</span><span style="color:#000;font-weight:bold">))</span>
+    <span style="color:#008080">TX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$((</span><span style="color:#d14">${</span><span style="color:#008080">TXnext</span><span style="color:#d14">}</span><span style="color:#000;font-weight:bold">-</span><span style="color:#d14">${</span><span style="color:#008080">TXpre</span><span style="color:#d14">}</span><span style="color:#000;font-weight:bold">))</span>
+ 
+    <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">[[</span> <span style="color:#008080">$RX</span> -lt <span style="color:#099">1024</span> <span style="color:#000;font-weight:bold">]]</span>;<span style="color:#000;font-weight:bold">then</span>
+        <span style="color:#008080">RX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#d14">${</span><span style="color:#008080">RX</span><span style="color:#d14">}</span><span style="color:#d14">B/s&#34;</span>
+    <span style="color:#000;font-weight:bold">elif</span> <span style="color:#000;font-weight:bold">[[</span> <span style="color:#008080">$RX</span> -gt <span style="color:#099">1048576</span> <span style="color:#000;font-weight:bold">]]</span>;<span style="color:#000;font-weight:bold">then</span>
+        <span style="color:#008080">RX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span><span style="color:#0086b3">echo</span> <span style="color:#008080">$RX</span> | awk <span style="color:#d14">&#39;{print $1/1048576 &#34;MB/s&#34;}&#39;</span><span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">else</span>
+        <span style="color:#008080">RX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span><span style="color:#0086b3">echo</span> <span style="color:#008080">$RX</span> | awk <span style="color:#d14">&#39;{print $1/1024 &#34;KB/s&#34;}&#39;</span><span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">fi</span>
+     
+    <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">[[</span> <span style="color:#008080">$TX</span> -lt <span style="color:#099">1024</span> <span style="color:#000;font-weight:bold">]]</span>;<span style="color:#000;font-weight:bold">then</span>
+        <span style="color:#008080">TX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#d14">${</span><span style="color:#008080">TX</span><span style="color:#d14">}</span><span style="color:#d14">B/s&#34;</span>
+    <span style="color:#000;font-weight:bold">elif</span> <span style="color:#000;font-weight:bold">[[</span> <span style="color:#008080">$TX</span> -gt <span style="color:#099">1048576</span> <span style="color:#000;font-weight:bold">]]</span>;<span style="color:#000;font-weight:bold">then</span>
+        <span style="color:#008080">TX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span><span style="color:#0086b3">echo</span> <span style="color:#008080">$TX</span> | awk <span style="color:#d14">&#39;{print $1/1048576 &#34;MB/s&#34;}&#39;</span><span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">else</span>
+        <span style="color:#008080">TX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span><span style="color:#0086b3">echo</span> <span style="color:#008080">$TX</span> | awk <span style="color:#d14">&#39;{print $1/1024 &#34;KB/s&#34;}&#39;</span><span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">fi</span>
+     
+    <span style="color:#0086b3">echo</span> -e <span style="color:#d14">&#34;</span><span style="color:#008080">$eth</span><span style="color:#d14"> \t </span><span style="color:#008080">$RX</span><span style="color:#d14">   </span><span style="color:#008080">$TX</span><span style="color:#d14"> &#34;</span>
+
+<span style="color:#000;font-weight:bold">done</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/shell-%E5%B7%AE%E5%BC%82%E5%A4%87%E4%BB%BD/">Shell | 差异备份</a></li>
+        
+        <li><a href="/post/syslog-ng%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B/">syslog-ng安装及简单实例</a></li>
+        
+        <li><a href="/post/less%E7%9A%84%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95/">Less的常见用法</a></li>
+        
+        <li><a href="/post/k8s-dns%E7%AD%96%E7%95%A5/">K8s DNS策略</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/shell'>shell</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "opstecwang/opstecwang.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="http://opstecwang.github.io/">opstecwang By opstecwang</a>
+        
+        | <a rel="nofollow" target="_blank" href="http://beian.miit.gov.cn/">沪ICP备20020475号</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='http://opstecwang.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="http://opstecwang.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="http://opstecwang.github.io/post/django-%E8%A1%A8%E5%8D%95%E5%AD%97%E6%AE%B5/" title="Django | 表单字段">Django | 表单字段</a>
+    </li>
+    
+    <li>
+        <a href="http://opstecwang.github.io/post/django-%E6%A8%A1%E5%9E%8B%E5%AD%97%E6%AE%B5/" title="Django | 模型字段">Django | 模型字段</a>
+    </li>
+    
+    <li>
+        <a href="http://opstecwang.github.io/post/shell-%E9%98%B2%E6%AD%A2ssh%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/" title="Shell | 防止SSH暴力破解">Shell | 防止SSH暴力破解</a>
+    </li>
+    
+    <li>
+        <a href="http://opstecwang.github.io/post/shell-%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F/" title="Shell | 实时查看网络流量">Shell | 实时查看网络流量</a>
+    </li>
+    
+    <li>
+        <a href="http://opstecwang.github.io/post/shell-%E5%B7%AE%E5%BC%82%E5%A4%87%E4%BB%BD/" title="Shell | 差异备份">Shell | 差异备份</a>
+    </li>
+    
+    <li>
+        <a href="http://opstecwang.github.io/post/syslog-ng%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B/" title="syslog-ng安装及简单实例">syslog-ng安装及简单实例</a>
+    </li>
+    
+    <li>
+        <a href="http://opstecwang.github.io/post/less%E7%9A%84%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95/" title="Less的常见用法">Less的常见用法</a>
+    </li>
+    
+    <li>
+        <a href="http://opstecwang.github.io/post/k8s-dns%E7%AD%96%E7%95%A5/" title="K8s DNS策略">K8s DNS策略</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="http://opstecwang.github.io/categories/kubernetes/">Kubernetes (1)</a></li>
+    
+    <li><a href="http://opstecwang.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统 (1)</a></li>
+    
+    <li><a href="http://opstecwang.github.io/categories/%E6%97%A5%E5%BF%97/">日志 (1)</a></li>
+    
+    <li><a href="http://opstecwang.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言 (2)</a></li>
+    
+    <li><a href="http://opstecwang.github.io/categories/%E8%84%9A%E6%9C%AC/">脚本 (3)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="http://opstecwang.github.io/tags/django/">Django</a>
+    
+    <a href="http://opstecwang.github.io/tags/kubernetes/">Kubernetes</a>
+    
+    <a href="http://opstecwang.github.io/tags/less/">less</a>
+    
+    <a href="http://opstecwang.github.io/tags/shell/">shell</a>
+    
+    <a href="http://opstecwang.github.io/tags/syslog-ng/">syslog-ng</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="http://opstecwang.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

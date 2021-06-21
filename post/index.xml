@@ -6,7 +6,106 @@
     <description>Recent content in Posts on opstecwang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 05 Jun 2021 09:00:01 +0800</lastBuildDate><atom:link href="http://opstecwang.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Jun 2021 09:50:48 +0800</lastBuildDate><atom:link href="http://opstecwang.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Django | 表单字段</title>
+      <link>http://opstecwang.github.io/post/django-%E8%A1%A8%E5%8D%95%E5%AD%97%E6%AE%B5/</link>
+      <pubDate>Thu, 10 Jun 2021 09:50:48 +0800</pubDate>
+      
+      <guid>http://opstecwang.github.io/post/django-%E8%A1%A8%E5%8D%95%E5%AD%97%E6%AE%B5/</guid>
+      <description>类BaseForm常用的属性和方法 data 默认值为None，以字典形式表示，字典的键值为表单字段，代码将数据绑定到对应的表单字段。
+auto_id 默认值为id_%s，以字符串格式化表示，若设置HTML元素控件的id属性，比如表单字段job，则元素控件id属性为id_job，%s代表表单字段名称。
+prefix 默认值为None，以字符串表示，设置表单的控件属性name和id的属性值，如果一个网页里使用多个相同的表单，那么设置该属性可以区分每个表单。
+initial 默认值为None，以字典的形式表示，在表单的实例化过程中设置初始化值。
+label_suffix 若参数桌子为None，则默认为冒号，以表单字段job为例，其HTML控件含有label标签（职位:），其中label标签里的冒号由参数label_suffix设置。 field_order 默认值为None，则以表单字段定义的先后顺序进行排列，作妖自定义排序，则将每个表单字段按先后顺序放置在列表里，并把列表作为该参数的值。
+use_required_attribute 默认值为None（或为True），为表单字段所对应的HTML控件设置required属性，该控件为必选项，数据不能为空，若设为False，则HTML控件为可填项。
+errors() 验证表单的数据是否存在异常，若存在异常，则获取异常信息，异常信息可以设为字典或JSON格式。
+is_valid() 验证表单数据是否存在异常，若存在，则返回False，否则返回True。
+as_table() 将表单字段以HTML的&amp;lt;table&amp;gt;标签生成网页表单。
+as_ul() 将表单字段以HTML的&amp;lt;ul&amp;gt;标签生成网页表单。
+as_p() 将表单字段以HTML的&amp;lt;p&amp;gt;标签生成网页表单。
+has_changed() 对比用于提交的表单数据与表单初始化数据是否发生变化。
+26个表单字段，及每个字段说明 CharField 文本框，参数max_length和min_length分别设置文本长度
+IntegerField 数值框，参数max_value设置最大值，min_value设置最小值。
+FloatField 数值框，验证数据是否为浮点数
+DecimalField 数值框，验证是否有小数点
+DateField 文本框，日期格式
+TimeField 文本框，时间格式
+DateTimeField 文本框，日期时间格式
+DurationField 文本框，时间段
+RegexField 文本框，正则表达式匹配
+EmailField 文本框，邮箱地址
+FileField 文件上传控件
+ImageField 文件上传控件
+FilePathField 文件选择控件
+URLField 文本框，路由地址
+BooleanField 复选框，True或False
+NullBooleanField 复选框，Null、True或False
+ChoiceField 下拉框，参数choices以元组形式表示，用于设置下拉框的选项列表
+TypedChoiceField 下拉框
+MultipleChoiceField 下拉框，验证数据是否在下拉框的选项列表
+TypedMultipleChoiceField 下拉框
+ComboField 文本框，为表单字段设置验证功能</description>
+    </item>
+    
+    <item>
+      <title>Django | 模型字段</title>
+      <link>http://opstecwang.github.io/post/django-%E6%A8%A1%E5%9E%8B%E5%AD%97%E6%AE%B5/</link>
+      <pubDate>Wed, 09 Jun 2021 10:50:48 +0800</pubDate>
+      
+      <guid>http://opstecwang.github.io/post/django-%E6%A8%A1%E5%9E%8B%E5%AD%97%E6%AE%B5/</guid>
+      <description>定义模型的基本要素：模型字段、重写函数__str__和Meta选项
+模型字段 AutoField 自增长类型，数据表的字段为整数，长度为11位。
+BigAutoField 自增长类型，数据表的字段为bigint，长度为20位。
+CharField 字符类型，适用于中小长度的字符串
+BooleanField 布尔类型，一个真／假（true/false）字段。
+CommaaSeparatedIntegerField 一个用逗号分隔的整数类型。和 CharField 中一样， maxlength 参数是必需的。
+DateField 日期字段
+DateTimeField 时间日期字段，额外选项同DateField
+EmailField 一个能检查值是否是有效的电子邮件地址的 CharField 。不接受 maxlength 参数，它的 maxlength 被自动设置为75。
+FileField 文件上传字段，必须参数upload_to一个本地的文件系统路径，被附加到你的 MEDIA_ROOT 设置后面，这决定了 get__url() 辅助函数的输出
+FilePathField 文件系统中某个目录下的文件名
+FloatField 浮点数，
+ImageField 同FileField要验证上传的对象是一个有效的图片
+IntegerField 整数
+IPAddressField IP地址，以字符串格式表示（例如： &amp;ldquo;24.124.1.30&amp;rdquo; ）。
+NullBooleanField 就像一个 BooleanField ，但它支持 None /Null
+PhoneNumberField 它是一个 CharField ，并且会检查值是否是一个合法的美式电话格式，如（XXX-XXX-XXXX） PositiveIntegerField 正整数
+SlugField 嵌条是报纸业的术语。 嵌条 就是一段内容的简短标签，这段内容只能包含字母、数字、下划线或连字符,通常用于URL中
+SmallIntegerField 和 IntegerField 类似，但是只允许在一个数据库相关的范围内的数值（通常是-32,768到+32,767）
+TextField 不限长度的文字长度
+TimeField 时分秒的时间显示。它接受的可指定参数与 DateField 和 DateTimeField 相同</description>
+    </item>
+    
+    <item>
+      <title>Shell | 防止SSH暴力破解</title>
+      <link>http://opstecwang.github.io/post/shell-%E9%98%B2%E6%AD%A2ssh%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/</link>
+      <pubDate>Mon, 07 Jun 2021 10:10:00 +0800</pubDate>
+      
+      <guid>http://opstecwang.github.io/post/shell-%E9%98%B2%E6%AD%A2ssh%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  #! /bin/bash # name:ssh_deny.sh cat /var/log/secure | awk &amp;#39;/Failed/ {print $(NF-3)}&amp;#39; | sort | uniq -c | awk &amp;#39;{print $2&amp;#34;=&amp;#34;$1}&amp;#39; &amp;gt; /root/black.txt DEFINE=&amp;#34;100&amp;#34; for i in `cat /root/black.txt` do IP=`echo $i | awk -F= &amp;#39;{print $1}&amp;#39;` NUM=`echo $i | awk -F= &amp;#39;{print $2}&amp;#39;` if [ $NUM -gt $DEFINE ]; then grep $IP /etc/hosts.</description>
+    </item>
+    
+    <item>
+      <title>Shell | 实时查看网络流量</title>
+      <link>http://opstecwang.github.io/post/shell-%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F/</link>
+      <pubDate>Mon, 07 Jun 2021 10:00:00 +0800</pubDate>
+      
+      <guid>http://opstecwang.github.io/post/shell-%E5%AE%9E%E6%97%B6%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F/</guid>
+      <description>可以实时查看指定网卡流量
+用法： bash RT-Traffic.sh eth0
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35  #!/bin/bash # shellname: RT-Traffic.sh while [ &amp;#34;1&amp;#34; ] do eth=$1 RXpre=$(cat /proc/net/dev | grep $eth | tr : &amp;#34; &amp;#34; | awk &amp;#39;{print $2}&amp;#39;) TXpre=$(cat /proc/net/dev | grep $eth | tr : &amp;#34; &amp;#34; | awk &amp;#39;{print $10}&amp;#39;) sleep 1 RXnext=$(cat /proc/net/dev | grep $eth | tr : &amp;#34; &amp;#34; | awk &amp;#39;{print $2}&amp;#39;) TXnext=$(cat /proc/net/dev | grep $eth | tr : &amp;#34; &amp;#34; | awk &amp;#39;{print $10}&amp;#39;) clear echo -e &amp;#34;\t RX `date +%k:%M:%S` TX&amp;#34; RX=$((${RXnext}-${RXpre})) TX=$((${TXnext}-${TXpre})) if [[ $RX -lt 1024 ]];then RX=&amp;#34;${RX}B/s&amp;#34; elif [[ $RX -gt 1048576 ]];then RX=$(echo $RX | awk &amp;#39;{print $1/1048576 &amp;#34;MB/s&amp;#34;}&amp;#39;) else RX=$(echo $RX | awk &amp;#39;{print $1/1024 &amp;#34;KB/s&amp;#34;}&amp;#39;) fi if [[ $TX -lt 1024 ]];then TX=&amp;#34;${TX}B/s&amp;#34; elif [[ $TX -gt 1048576 ]];then TX=$(echo $TX | awk &amp;#39;{print $1/1048576 &amp;#34;MB/s&amp;#34;}&amp;#39;) else TX=$(echo $TX | awk &amp;#39;{print $1/1024 &amp;#34;KB/s&amp;#34;}&amp;#39;) fi echo -e &amp;#34;$eth\t $RX$TX&amp;#34; done   </description>
+    </item>
+    
+    <item>
+      <title>Shell | 差异备份</title>
+      <link>http://opstecwang.github.io/post/shell-%E5%B7%AE%E5%BC%82%E5%A4%87%E4%BB%BD/</link>
+      <pubDate>Sun, 06 Jun 2021 21:10:00 +0800</pubDate>
+      
+      <guid>http://opstecwang.github.io/post/shell-%E5%B7%AE%E5%BC%82%E5%A4%87%E4%BB%BD/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87  #!</description>
+    </item>
+    
     <item>
       <title>syslog-ng安装及简单实例</title>
       <link>http://opstecwang.github.io/post/syslog-ng%E5%AE%89%E8%A3%85%E5%8F%8A%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B/</link>
@@ -18,9 +117,9 @@
 简介 syslog是Linux系统默认的日志守护进程，默认的syslog配置文件是/etc/syslog.conf文件。syslog守护进程是可配置的，它允许人们为每一种类型的系统信息精确地指定一个存放地点。比较 syslog ，syslog-ng 具有众多高级的功能：更好的网络支持，更加方便的配置，集中式的网络日志存储，并且更具有弹性。比如，使用syslogd时，所有的iptables日志与其他内核日志一起全部存储到了kern.log文件里。Syslog-ng则可以让你有选择性的将iptables部分分出到另外的日志文件中。Syslogd仅能使用UDP协议，Syslog-ng 可以使用UDP和TCP协议。所以我们可以在加密的网络隧道中传输日志到集中日志服务器。
 syslog-ng的一个设计原则就是建立更好的消息过滤粒度。syslog-ng能够进行基于内容和优先权/facility的过滤。另一个设计原则是更容易进行不同防火墙网段的信息转发，它支持主机链，即使日志消息经过了许多计算机的转发，也可以找出原发主机地址和整个转发链。最后的一个设计原则就是尽量使配置文件强大和简洁。syslog-ng作为syslog的替代工具，可以完全替代syslog的服务，并且通过定义规则，实现更好的过滤功能。
 模式 syslog-ng模式有三种：客户端模式、服务端模式、中继模式。
- 客户端模式（client mode）： 服务端模式（server mode）: 中继模式（Relay mode）：  安装 1、安装 [root@syslog-ng ~]# yum install syslog-ng -y # 安装 [root@syslog-ng ~]# systemctl start syslog-ng.service # 启动 [root@syslog-ng ~]# systemctl enable syslog-ng.service # 开机启动 2、工作目录 配置目录
-[root@syslog-ng syslog-ng]# pwd /etc/syslog-ng [root@syslog-ng syslog-ng]# ls conf.d patterndb.d scl.conf syslog-ng.conf syslog-ng.conf 为主配置文件，它主要分为 5 段：
-options { }; # 全局配置 source s_name { }; # 日志源，可以是本地也可以是远程主机 filter f_name { }; # 过滤规则 destination d_name { }; # 日志输出，可以是本地也可以是远程主机 log { source(s_name); filter(f_name); destination() }; #此段将来源、过滤、目的，连接起来并且告诉syslog-ng如何处理日志 简单实例 1、实例描述 本实例才用syslog-ng的C/S架构，客户端和服务端都要安装syslog-ng。接收远程客户端应用日志（dev-api.</description>
+ 客户端模式（client mode）： 服务端模式（server mode）: 中继模式（Relay mode）：  安装 1、安装 [root@syslog-ng ~]# yum install syslog-ng -y # 安装[root@syslog-ng ~]# systemctl start syslog-ng.service # 启动[root@syslog-ng ~]# systemctl enable syslog-ng.service # 开机启动2、工作目录 配置目录
+[root@syslog-ng syslog-ng]# pwd/etc/syslog-ng[root@syslog-ng syslog-ng]# lsconf.d patterndb.d scl.conf syslog-ng.confsyslog-ng.conf 为主配置文件，它主要分为 5 段：
+options { }; # 全局配置source s_name { }; # 日志源，可以是本地也可以是远程主机filter f_name { }; # 过滤规则destination d_name { }; # 日志输出，可以是本地也可以是远程主机log { source(s_name); filter(f_name); destination() }; #此段将来源、过滤、目的，连接起来并且告诉syslog-ng如何处理日志简单实例 1、实例描述 本实例才用syslog-ng的C/S架构，客户端和服务端都要安装syslog-ng。接收远程客户端应用日志（dev-api.</description>
     </item>
     
     <item>
@@ -31,7 +130,7 @@ options { }; # 全局配置 source s_name { }; # 日志源，可以是本地也�
       <guid>http://opstecwang.github.io/post/less%E7%9A%84%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95/</guid>
       <description>less用来查看文件内容，功能极其强大。它在搜索文件内容之前不会加载整个文件，看文本文件经常用到这个命令。
 它的使用方法很多，常用到的如下：
-1、搜索 1.1 向下搜索 用法： /搜索关键词 /：使用一个模式进行关键词搜索，并定位到下一个匹配的关键词 n：向下查找下一个匹配的关键词 N：向上查找下一个匹配的关键词 1.2 向上搜索 用法： ?搜索关键词 ?：使用模式进行关键词搜索，并定位到下一个匹配的关键词 n：向上查找下一个匹配的关键词 N：向下查找下一个匹配的关键词 2、全屏导航 [pageup]键：向上翻一页 [pagedown]键：向下翻一页 空格键：向下翻一页 3、单行导航 [Enter]键：向下移动一行 上下方向键：向上或向下移动一行 4、移动到首、尾行 g：移动到第一行 G：移动到最后一行 </description>
+1、搜索 1.1 向下搜索 用法： /搜索关键词/：使用一个模式进行关键词搜索，并定位到下一个匹配的关键词n：向下查找下一个匹配的关键词N：向上查找下一个匹配的关键词1.2 向上搜索 用法： ?搜索关键词?：使用模式进行关键词搜索，并定位到下一个匹配的关键词n：向上查找下一个匹配的关键词N：向下查找下一个匹配的关键词2、全屏导航 [pageup]键：向上翻一页[pagedown]键：向下翻一页空格键：向下翻一页3、单行导航 [Enter]键：向下移动一行上下方向键：向上或向下移动一行4、移动到首、尾行 g：移动到第一行G：移动到最后一行</description>
     </item>
     
     <item>
@@ -42,7 +141,7 @@ options { }; # 全局配置 source s_name { }; # 日志源，可以是本地也�
       <guid>http://opstecwang.github.io/post/k8s-dns%E7%AD%96%E7%95%A5/</guid>
       <description>k8s内设了4中DNS配置策略，通过dnsPolicy可配置
  None : 无任何策略 Default ：默认 ClusterFirst ：集群 DNS 优先 ClusterFirstWithHostNet ：集群DNS优先，同时也使用宿主机网络  1、None策略 当dnsPolicy设置成None后，k8s不会为pod加载任何DNS配置。为了避免Pod里面没有DNS配置，最后通过dnsConfig来自定义DNS参数，如下所示：
-apiVersion: v1 kind: Pod metadata: name: demo namespace: default spec: containers: - image: base/java command: - &amp;quot;java -jar /opt/app.jar&amp;quot; imagePullPolicy: IfNotPresent name: demo restartPolicy: Always dnsPolicy: None dnsConfig: nameservers: - xxx.xxx.xxx.xxx searches: - ns1.svc.cluster.local - my.dns.search.suffix options: - name: ndots value: &amp;quot;2&amp;quot; - name: edns0 通过上述配置创建 Pod 之后，执行 kubectl exec demo cat /etc/resolv.conf 命令即可看到自定义的配置项目，如下：</description>
+apiVersion: v1kind: Podmetadata:name: demonamespace: defaultspec:containers:- image: base/javacommand:- &amp;quot;java -jar /opt/app.jar&amp;quot;imagePullPolicy: IfNotPresentname: demorestartPolicy: AlwaysdnsPolicy: NonednsConfig:nameservers:- xxx.xxx.xxx.xxxsearches:- ns1.svc.cluster.local- my.dns.search.suffixoptions:- name: ndotsvalue: &amp;quot;2&amp;quot;- name: edns0通过上述配置创建 Pod 之后，执行 kubectl exec demo cat /etc/resolv.conf 命令即可看到自定义的配置项目，如下：</description>
     </item>
     
   </channel>
